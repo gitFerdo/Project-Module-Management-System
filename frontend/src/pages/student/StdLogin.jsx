@@ -97,7 +97,7 @@ const StdLogin = () =>
 
                     <p className='forget-password'>Forgot Password ?</p>
 
-                    <Link to={ '/std-pc-pm-signup' }><p className='forget-password'>Sign In</p></Link>
+                    <Link to={ '/std-pc-pm-signup' }><p className='forget-password'>Sign Up</p></Link>
 
                     <button className='login-button' type='submit'>Sign In</button>
                 </div>
