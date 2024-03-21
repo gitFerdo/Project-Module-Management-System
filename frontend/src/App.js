@@ -26,7 +26,6 @@ import StdSignUp from "./pages/student/StdSignUp";
 import StdLogin from "./pages/student/StdLogin";
 import StdHome from "./pages/student/StdHome";
 import StdGrpRegistration from "./pages/student/StdGrpRegistration";
-import StdGrpDetail from "./pages/student/StdGrpDetail";
 
 function App ()
 {
@@ -39,7 +38,6 @@ function App ()
         <Route path="/std-pc-pm-signup" element={ <StdSignUp /> } />
         <Route path="/std-pc-pm-login" element={ <StdLogin /> } />
         <Route path="/std-group-reg" element={ <StdGrpRegistration /> } />
-        <Route path="/std-proGrp-detail/:id" element={ <StdGrpDetail /> } />
 
         {/* Project Coordinator Pages */ }
         <Route path="/proCo-home" element={ <ProCoHome /> } />

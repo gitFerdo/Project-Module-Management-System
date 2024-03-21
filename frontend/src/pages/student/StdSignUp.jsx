@@ -29,7 +29,7 @@ const StdSignUp = () =>
 
             if ( response.data.status )
             {
-                navigate( '/login' );
+                navigate( '/std-pc-pm-login' );
             } else
             {
                 window.alert( 'Register failed. Please try again' );

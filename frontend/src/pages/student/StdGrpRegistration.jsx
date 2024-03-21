@@ -4,7 +4,7 @@ import '../../styles/student/StdGrpRegistration.css';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 
-function StdGrpRegistration ( { id } )
+function StdGrpRegistration ()
 {
     const navigate = useNavigate();
 
@@ -17,34 +17,11 @@ function StdGrpRegistration ( { id } )
             batch: '',
             specialization: ''
         },
-
         members: [
-            {
-                name: '',
-                registrationNumber: '',
-                contactNumber: '',
-                email: '',
-                batch: '',
-                specialization: ''
-            },
-            {
-                name: '',
-                registrationNumber: '',
-                contactNumber: '',
-                email: '',
-                batch: '',
-                specialization: ''
-            },
-            {
-                name: '',
-                registrationNumber: '',
-                contactNumber: '',
-                email: '',
-                batch: '',
-                specialization: ''
-            }
+            { name: '', registrationNumber: '', contactNumber: '', email: '', batch: '', specialization: '' },
+            { name: '', registrationNumber: '', contactNumber: '', email: '', batch: '', specialization: '' },
+            { name: '', registrationNumber: '', contactNumber: '', email: '', batch: '', specialization: '' }
         ],
-
         project: {
             title: '',
             researchArea: '',
@@ -57,13 +34,13 @@ function StdGrpRegistration ( { id } )
     {
         e.preventDefault();
 
-        axios.post( 'http://localhost:3000/auth/std-proGrp-reg', projectData )
+        axios.post( 'http://localhost:3000/auth/std-proGrp-reg', { projectData: projectData } )
             .then( response =>
             {
-                if ( response.data.status )
+                if ( response.data.status === 'Project group registered successfully' )
                 {
                     console.log( response.data.status );
-                    navigate( '/std-proGrp-detail/' );
+                    navigate( '/std-home' );
                 } else
                 {
                     console.log( response.data.status );
@@ -77,19 +54,17 @@ function StdGrpRegistration ( { id } )
             } );
     };
 
+
     const handleLeaderChange = ( e ) =>
     {
         const { name, value } = e.target;
-        setProjectData( ( prevState ) =>
-        {
-            return {
-                ...prevState,
-                leader: {
-                    ...prevState.leader,
-                    [ name ]: value,
-                },
-            };
-        } );
+        setProjectData( prevState => ( {
+            ...prevState,
+            leader: {
+                ...prevState.leader,
+                [ name ]: value,
+            },
+        } ) );
 
         console.log( projectData.leader );
     };
@@ -97,23 +72,12 @@ function StdGrpRegistration ( { id } )
     const handleMemberChange = ( e, index ) =>
     {
         const { name, value } = e.target;
-        setProjectData( ( prevState ) =>
+        setProjectData( prevState =>
         {
             const updatedMembers = prevState.members.map( ( member, i ) =>
-            {
-                if ( i === index )
-                {
-                    return {
-                        ...member,
-                        [ name ]: value,
-                    };
-                }
-                return member;
-            } );
-            return {
-                ...prevState,
-                members: updatedMembers,
-            };
+                i === index ? { ...member, [ name ]: value } : member
+            );
+            return { ...prevState, members: updatedMembers };
         } );
 
         console.log( projectData.members );
@@ -121,10 +85,8 @@ function StdGrpRegistration ( { id } )
 
     const handleProjectChange = ( e ) =>
     {
-        console.log( "Project input changed" );
-
         const { name, value } = e.target;
-        setProjectData( ( prevState ) => ( {
+        setProjectData( prevState => ( {
             ...prevState,
             project: {
                 ...prevState.project,
@@ -407,8 +369,6 @@ function StdGrpRegistration ( { id } )
                             <button className='std-grpReg-form-btn' type='submit'>Register</button>
                         </div>
                     </form>
-
-                    <button><Link to={ `/std-proGrp-detail/${ projectData._id }` }>View Details</Link></button>
                 </div>
             </div>
         </div>
