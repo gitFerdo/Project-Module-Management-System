@@ -1,0 +1,133 @@
+.std-grpReg-container-inner{
+     margin: auto;
+    padding: 0;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    background-color: #FF5E37;
+}
+
+.std-grpReg-form{
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px 10px 50px 10px;
+    background-color: #F3F2F7;
+    border-radius: 0px 60px 0px 60px;
+    box-shadow: 0px 24px 53px #0000001a, 0px 96px 96px #00000017, 0px 215px 129px #0000000d, 0px 383px 153px #00000003, 0px 598px 167px transparent;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.std-grpReg-form-inner{
+    display: block;
+    padding: 5px 50px;
+}
+
+.std-grpReg-form-inner .main-heading {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.std-grpReg-form-table{
+    margin: 0;
+    width: 100%;
+    border-spacing: 0;
+    max-width: max-content;
+    border-collapse: collapse;
+}
+
+.std-grpReg-form-table-head-none{
+    border: none !important;
+}
+
+th {
+  font-family: "Roboto Flex-Bold", Helvetica;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+    color: #292929;
+    padding-bottom: 15px;
+    /* border-right: 1px solid #292929; */
+    border-bottom: 1px solid #292929;
+}
+
+.std-grpReg-form-label{
+    border: none !important;
+    color: #292929;
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: start;
+    justify-content: start;
+}
+
+td {
+  padding: 15px 10px;
+    vertical-align: middle;
+}
+
+.std-grpReg-form-input{
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 40px;
+    width: 190px;
+    border: none !important;
+    padding: 0px 15px;
+    color:  #949494;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0px 5px 10px #0000001a, 0px 18px 18px #00000017, 0px 41px 25px #0000000d, 0px 73px 29px #00000003, 0px 115px 32px transparent;
+    box-sizing: border-box;
+    outline: none !important;
+}
+
+.std-grpReg-form-label-sub{
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: start;
+    justify-content: start;
+    color: #29292980;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+.std-grpReg-form-inner-section2 {
+  flex: 1;
+}
+
+.sec2{
+    display: flex;
+    margin-top: 20px;
+}
+
+.sec2 .std-grpReg-form-label{
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 50px;
+}
+
+.std-grpReg-form-label-sub2{
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: start;
+    justify-content: start;
+    color: #29292980;
+    margin-left: -115px;
+    margin-top: 25px;
+margin-bottom: 5px;
+}
+
+.sec2 .std-grpReg-form-input{
+    width: 840px;
+    margin-top: -10px;
+}

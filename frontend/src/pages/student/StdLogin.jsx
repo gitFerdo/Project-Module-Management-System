@@ -64,6 +64,7 @@ const StdLogin = () =>
 
                     <label className='login-label' htmlFor='email'>Email</label>
                     <input
+                        className='std-login-input'
                         type='email'
                         id='email'
                         name='email'
@@ -75,6 +76,7 @@ const StdLogin = () =>
                     <label className='login-label' htmlFor='password'>Password</label>
                     <div className='login-password-input'>
                         <input
+                            className='std-login-input'
                             type={ showPassword ? 'text' : 'password' }
                             id='password'
                             name='password'
@@ -97,7 +99,7 @@ const StdLogin = () =>
 
                     <p className='forget-password'>Forgot Password ?</p>
 
-                    <Link to={ '/std-pc-pm-signup' }><p className='forget-password'>Sign In</p></Link>
+                    <Link to={ '/std-pc-pm-signup' }><p className='navigate-signn'>Sign Up</p></Link>
 
                     <button className='login-button' type='submit'>Sign In</button>
                 </div>

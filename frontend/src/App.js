@@ -1,10 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-// Student pages
-import StdSignUp from "./pages/student/StdSignUp";
-import StdLogin from "./pages/student/StdLogin";
-import StdHome from "./pages/student/StdHome";
-
 // Project Coordinator pages
 import ProCoHome from "./pages/projectCoordinator/ProCoHome";
 
@@ -26,15 +21,25 @@ import CoSupHome from "./pages/co-supervisor/CoSupHome";
 // Project Member pages
 import ProMemHome from "./pages/projectMembers/ProMemHome";
 
+// Student pages
+import StdSignUp from "./pages/student/StdSignUp";
+import StdLogin from "./pages/student/StdLogin";
+import StdHome from "./pages/student/StdHome";
+import StdGrpRegistration from "./pages/student/StdGrpRegistration";
+import StdGrpDetail from "./pages/student/StdGrpDetail";
+
 function App ()
 {
   return (
     <BrowserRouter>
       <Routes>
+
         {/* Student Pages */ }
         <Route path="/std-home" element={ <StdHome /> } />
         <Route path="/std-pc-pm-signup" element={ <StdSignUp /> } />
         <Route path="/std-pc-pm-login" element={ <StdLogin /> } />
+        <Route path="/std-group-reg" element={ <StdGrpRegistration /> } />
+        <Route path="/std-proGrp-detail/:id" element={ <StdGrpDetail /> } />
 
         {/* Project Coordinator Pages */ }
         <Route path="/proCo-home" element={ <ProCoHome /> } />

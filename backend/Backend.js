@@ -4,10 +4,11 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
-import { StudentRouter } from './routes/student.js';
+import { StudentRouter } from './routes/student/student.js';
 import { ExaminerRouter } from './routes/examiner.js';
 import { SupervisorRouter } from './routes/supervisor.js';
 import { CoSupervisorRouter } from './routes/cosupervisor.js';
+import { stdProGroupRouter } from './routes/student/stdproregistrartion.js';
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use( '/auth', StudentRouter );
 app.use( '/auth', ExaminerRouter );
 app.use( '/auth', SupervisorRouter );
 app.use( '/auth', CoSupervisorRouter );
+app.use( '/auth', stdProGroupRouter );
 
 // Database connection
 mongoose.set( "strictQuery", false );

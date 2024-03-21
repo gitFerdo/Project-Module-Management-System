@@ -1,0 +1,114 @@
+.std-header {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100%;
+}
+
+.upper-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 37px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: #1b6c86;
+}
+
+.upper-header-title{
+    font-family: 'Roboto Mono-Bold', Helvetica;
+    color: #f3f2f7;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 9px;
+}
+
+.std-lower-header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: #F3F2F7;
+    border-top: none !important;
+    border-bottom: 2px solid #1b6c86;
+    border-left: 4px solid #1b6c86;
+    border-right: 4px solid #1b6c86;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+}
+
+.std-header-nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+ul{
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    list-style-type: none !important;
+    gap: 50px;
+}
+
+.std-header-li,
+.std-header-li-login{
+    display: inline-block;
+}
+
+.std-header-li a,
+.std-header-li-login a{
+    font-family: 'Roboto Flex-Medium', Helvetica;
+    font-size: 24px;
+    font-weight: 600;
+    text-decoration: none !important;
+}
+
+.std-header-li a{
+    color: #000000;
+}
+
+.std-header-li.active a {
+    color: #1b6c86;
+}
+
+.std-header-li-login a{
+    color: #ff5e37;
+}
+
+/* Responsive Layout */
+/* @media screen and (max-width: 768px) {
+    .std-header {
+        flex-direction: row;
+    }
+
+    .upper-header {
+        height: 5vh;
+    }
+
+    .std-lower-header {
+        height: 15vh;
+    }
+
+    ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .std-header-li a,
+    .std-header-li-login a {
+        font-size: 3vw;
+    }
+} */

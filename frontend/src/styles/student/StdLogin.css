@@ -70,7 +70,7 @@ body {
     line-height: normal;
 }
 
-input {
+.std-login-input {
     width: 100%;
     height: 45px;
     padding: 0px 15px;
@@ -110,6 +110,18 @@ input {
     margin-top: 0;
     margin-bottom: 30px;
     padding-right: 10px;
+    cursor: pointer;
+}
+
+.navigate-signn{
+    color: #949494;
+    font-size: 12px;
+    font-weight: 400;
+    text-align: start;
+    text-decoration: underline;
+    margin-top: -43px;
+    margin-bottom: 50px;
+    padding-left: 25px;
     cursor: pointer;
 }
 

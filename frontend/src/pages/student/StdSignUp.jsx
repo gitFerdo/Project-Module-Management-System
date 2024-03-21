@@ -77,6 +77,7 @@ const StdSignUp = () =>
 
                     <label className='sign-up-label' htmlFor='email'>Email</label>
                     <input
+                        className='std-signup-input'
                         type='email'
                         id='email'
                         name='email'
@@ -89,6 +90,7 @@ const StdSignUp = () =>
                     <label className='sign-up-label' htmlFor='password'>Password</label>
                     <div className='sign-up-password-input'>
                         <input
+                            className='std-signup-input'
                             type={ showPassword ? 'text' : 'password' }
                             id='password'
                             name='password'
@@ -112,6 +114,7 @@ const StdSignUp = () =>
 
                     <label className='sign-up-label' htmlFor='re-password'>Re-enter Password</label>
                     <input
+                        className='std-signup-input'
                         type='password'
                         id='re-password'
                         name='re-password'
@@ -128,7 +131,7 @@ const StdSignUp = () =>
 
                     <p className='forget-password'>Forgot Password ?</p>
 
-                    <Link to={ '/std-pc-pm-login' }><p className='forget-password'>Sign Up</p></Link>
+                    <Link to={ '/std-pc-pm-login' }><p className='navigate-signn'>Sign Ip</p></Link>
 
                     <button className='sign-up-button' type='submit'>Sign Up</button>
                 </div>
