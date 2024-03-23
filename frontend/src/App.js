@@ -17,6 +17,7 @@ import ExaHome from "./pages/examiners/ExaHome";
 import SupSignUp from "./pages/supervisors/SupSignUp";
 import SupLogin from "./pages/supervisors/SupLogin";
 import SupHome from "./pages/supervisors/SupHome";
+import SupReportMarking from "./pages/supervisors/SupReportMarking";
 
 // Co-Supervisor pages
 import CoSupervisorSignUp from "./pages/co-supervisor/CoSupervisorSignUp";
@@ -25,6 +26,7 @@ import CoSupHome from "./pages/co-supervisor/CoSupHome";
 
 // Project Member pages
 import ProMemHome from "./pages/projectMembers/ProMemHome";
+import CoSupReportMarking from "./pages/co-supervisor/CoSupReportMarking";
 
 function App ()
 {
@@ -51,11 +53,13 @@ function App ()
         <Route path="/sup-home" element={ <SupHome /> } />
         <Route path="/sup-signup" element={ <SupSignUp /> } />
         <Route path="/sup-login" element={ <SupLogin /> } />
+        <Route path="/sup-re-marking" element={ <SupReportMarking /> } />
 
         {/* Co-Supervisor Pages */ }
         <Route path="/cosup-home" element={ <CoSupHome /> } />
         <Route path="/cosup-signup" element={ <CoSupervisorSignUp /> } />
         <Route path="/cosup-login" element={ <CoSupLogin /> } />
+        <Route path="/cosup-re-marking" element={ <CoSupReportMarking /> } />
       </Routes>
     </BrowserRouter>
   );

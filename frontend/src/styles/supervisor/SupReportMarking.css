@@ -1,0 +1,219 @@
+.sup-remarking-container {
+    margin: 0;
+    padding: 0;
+    background-color: #F3F2F7;
+}
+
+.sup-remarking-container .main-heading {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+
+.sup-remarking-speNav {
+    position: relative;
+    margin: 10px;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sup-remarking-supNev-btn {
+    background-color: #1B6C86;
+    border-radius: 8px;
+    box-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+    border: none !important;
+    height: 60px;
+    width: 170px;
+    cursor: pointer;
+}
+
+.sup-remarking-supNev-btn a {
+    text-decoration: none !important;
+    font-size: 18px;
+    font-family: "Roboto Mono-Regular", Helvetica;
+    font-weight: 400;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 0;
+    text-shadow: 0px 1px 1px #0000003a;
+}
+
+.sup-remarking-supNev-btn.active {
+    color: #000000;
+    background-color: #ffffff;
+    border: 5px solid #1B6C86;
+}
+
+.sup-remarking-form{
+    margin: 80px 110px;
+}
+
+.sup-remarking-form-field {
+    display: flex;
+    margin-bottom: 0px;
+    align-items: center;
+}
+
+.sup-remarking-form-field .sup-remarking-form-label {
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: start;
+    color: #000000;
+    width: 150px;
+}
+
+.sup-remarking-form-field .sup-remarking-form-input {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    height: 40px;
+    width: 290px;
+    margin-left: 0px;
+    margin-top: 15px;
+}
+
+.div-line{
+    height: 4px;
+    width: 1400px;
+    background-color: #1B6C86;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 50px;
+}
+
+.sup-marking-rubric .main-heading{
+    text-align: start;
+    margin-top: 60px;
+    margin-bottom: 50px;
+    margin-left: 100px;
+}
+
+.sup-marking-filter-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 10px 150px;
+    padding: 30px 0px;
+    text-align: center;
+    justify-content: center;
+}
+
+.sup-marking-filter-select-status {
+  width: 200px;
+  height: 40px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  font-family: "Roboto Mono-Regular", Helvetica;
+  font-size: 16px;
+  font-weight: 400; 
+  color: #1B6C86;
+  background-color: #f3f2f7;
+  cursor: pointer;
+  outline: none;
+}
+
+.sup-marking-filter-select-status:hover {
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sup-marking-filter-select-status:focus {
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.sup-marking-filter-select-status::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 1px solid #1B6C86;
+}
+
+.sup-marking-filter-label {
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1B6C86;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+
+.sup-marking-filter-input {
+    border: 2px solid #1B6C86;
+    border-radius: 8px;
+    height: 40px;
+    width: 200px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.sup-marking-filter-field-select,
+.sup-marking-filter-field-name,
+.sup-marking-filter-field-regno,
+.sup-marking-filter-field-contactno {
+    display: flex;
+    flex-direction: column;
+}
+
+.sup-marking-search-btn {
+    width: 164px;
+    height: 45px;
+    margin: 10px auto;
+    background-color: #1B6C86;
+    color: #F8F8F8;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table, th, td {
+  border: 1px solid;
+}
+
+td>td{
+    border: none !important;
+}
+
+table {
+  margin: 50px auto;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+
+.sup-rubric-table .sup-rubric-input {
+  border-radius: 8px;
+  margin: 0 auto;
+}
+
+.sup-marking-submit-btn{
+        width: 164px;
+    height: 45px;
+    margin: 10px auto;
+    background-color: #1B6C86;
+    color: #F8F8F8;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
