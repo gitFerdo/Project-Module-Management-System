@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../../styles/student/StdLogin.css';
 
 const StdLogin = () =>
@@ -25,25 +27,54 @@ const StdLogin = () =>
         {
             if ( response.data.status )
             {
-                if ( response.data.role === 'proCodinator' )
+
+                toast.success( 'Login successful! Redirecting...', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                } );
+
+                setTimeout( () =>
                 {
-                    navigate( '/proCo-home' );
-                } else if ( response.data.role === 'proMember' )
-                {
-                    navigate( '/proMem-home' )
-                } else
-                {
-                    navigate( '/std-home' );
-                }
+                    if ( response.data.role === 'proCodinator' )
+                    {
+                        navigate( '/proCo-home' );
+                    } else if ( response.data.role === 'proMember' )
+                    {
+                        navigate( '/proMem-home' );
+                    } else
+                    {
+                        navigate( '/std-home' );
+                    }
+                }, 5000 );
             } else
             {
-                window.alert( 'Incorrect email or password. Please try again.' );
+                toast.error( 'Incorrect email or password. Please try again.', {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                } );
             }
-
         } ).catch( err =>
         {
             console.log( err );
-            window.alert( 'An error occurred while logging in. Please try again later.' );
+            toast.error( 'An error occurred while logging in. Please try again later.', {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            } );
         } );
     };
 
@@ -102,6 +133,9 @@ const StdLogin = () =>
                     <Link to={ '/std-pc-pm-signup' }><p className='navigate-signn'>Sign Up</p></Link>
 
                     <button className='login-button' type='submit'>Sign In</button>
+
+                    {/* For popup */ }
+                    <ToastContainer />
                 </div>
             </form>
         </div>

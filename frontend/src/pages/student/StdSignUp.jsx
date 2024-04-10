@@ -4,6 +4,8 @@ import '../../styles/student/StdSignUp.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const StdSignUp = () =>
 {
@@ -27,17 +29,62 @@ const StdSignUp = () =>
                 password,
             } );
 
-            if ( response.data.status )
+            // Check if the response status is 200 (OK)
+            if ( response.status === 200 )
             {
-                navigate( '/std-pc-pm-login' );
+                toast.success( 'Successfully signed up! Redirecting to login...', {
+                    position: 'top-center',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    backgroundColor: '#1B6C86',
+                    color: '#F8F8F8',
+                } );
+
+                setTimeout( () => navigate( '/std-pc-pm-login' ), 5000 );
             } else
             {
-                window.alert( 'Register failed. Please try again' );
+                // Handle non-200 status codes
+                if ( response.status === 400 && response.data.message === "Student already exists" )
+                {
+                    toast.error( 'This email is already in use. Please use a different email.', {
+                        position: 'top-center',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    } );
+                } else
+                {
+                    toast.error( 'Register failed. Please try again', {
+                        position: 'top-center',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    } );
+                }
             }
         } catch ( error )
         {
+            // Handle errors that are not caught by the above logic
             console.error( 'Error while signing up:', error );
-            window.alert( 'An error occurred while registering. Please try again later...' );
+            toast.error( 'An unexpected error occurred. Please try again later...', {
+                position: 'top-center',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            } );
         }
     };
 
@@ -131,9 +178,12 @@ const StdSignUp = () =>
 
                     <p className='forget-password'>Forgot Password ?</p>
 
-                    <Link to={ '/std-pc-pm-login' }><p className='navigate-signn'>Sign Ip</p></Link>
+                    <Link to={ '/std-pc-pm-login' }><p className='navigate-signn'>Sign In</p></Link>
 
                     <button className='sign-up-button' type='submit'>Sign Up</button>
+
+                    {/* For popup */ }
+                    <ToastContainer />
                 </div>
             </form>
         </div>
