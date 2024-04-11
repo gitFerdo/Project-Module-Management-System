@@ -29,7 +29,7 @@ const StdLogin = () =>
             {
 
                 toast.success( 'Login successful! Redirecting...', {
-                    position: "top-center",
+                    position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -54,7 +54,7 @@ const StdLogin = () =>
             } else
             {
                 toast.error( 'Incorrect email or password. Please try again.', {
-                    position: "top-center",
+                    position: "top-right",
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -67,7 +67,7 @@ const StdLogin = () =>
         {
             console.log( err );
             toast.error( 'An error occurred while logging in. Please try again later.', {
-                position: "top-center",
+                position: "top-right",
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

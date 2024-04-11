@@ -33,7 +33,7 @@ const StdSignUp = () =>
             if ( response.status === 200 )
             {
                 toast.success( 'Successfully signed up! Redirecting to login...', {
-                    position: 'top-center',
+                    position: 'top-right',
                     autoClose: 5000,
                     hideProgressBar: false,
                     closeOnClick: true,
@@ -51,7 +51,7 @@ const StdSignUp = () =>
                 if ( response.status === 400 && response.data.message === "Student already exists" )
                 {
                     toast.error( 'This email is already in use. Please use a different email.', {
-                        position: 'top-center',
+                        position: 'top-right',
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -62,7 +62,7 @@ const StdSignUp = () =>
                 } else
                 {
                     toast.error( 'Register failed. Please try again', {
-                        position: 'top-center',
+                        position: 'top-right',
                         autoClose: 5000,
                         hideProgressBar: false,
                         closeOnClick: true,
@@ -77,7 +77,7 @@ const StdSignUp = () =>
             // Handle errors that are not caught by the above logic
             console.error( 'Error while signing up:', error );
             toast.error( 'An unexpected error occurred. Please try again later...', {
-                position: 'top-center',
+                position: 'top-right',
                 autoClose: 5000,
                 hideProgressBar: false,
                 closeOnClick: true,

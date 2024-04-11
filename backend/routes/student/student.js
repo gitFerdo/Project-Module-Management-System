@@ -78,4 +78,46 @@ router.post( '/std-pc-pm-login', async ( req, res ) =>
     }
 } );
 
+router.get( '/std-pc-pm-check-login', async ( req, res ) =>
+{
+    const token = req.cookies.token;
+
+    if ( !token )
+    {
+        return res.json( { isLoggedIn: false } );
+    }
+
+    try
+    {
+        const decoded = jwt.verify( token, process.env.KEY );
+        // If the token is valid, the user is logged in
+        return res.json( { isLoggedIn: true } );
+    } catch ( error )
+    {
+        // If the token is invalid or expired, the user is not logged in
+        console.error( 'Token verification failed:', error );
+        return res.json( { isLoggedIn: false } );
+    }
+} );
+
+router.post( '/std-pc-pm-logout', async ( req, res ) =>
+{
+    try
+    {
+        res.clearCookie( 'token' );
+
+        return res.json( {
+            status: true,
+            message: "Logout Successfully"
+        } );
+    } catch ( error )
+    {
+        console.error( "Error during login:", error );
+
+        return res.status( 500 ).json( {
+            message: "An error occurred during logout"
+        } );
+    }
+} );
+
 export { router as StudentRouter };

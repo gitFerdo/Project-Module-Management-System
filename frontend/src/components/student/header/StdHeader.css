@@ -88,6 +88,69 @@ ul{
     color: #ff5e37;
 }
 
+.std-header-li-after-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user-icon{
+    width: 30px;
+    height: 30px;
+    color: #ff5e37;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    background-color: #f3f2f7;
+    border-radius: 10px;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    margin: 5px;
+    padding: 10px;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-menu a{
+    margin-left: -5px;
+}
+
+.dropdown-menu a, 
+.dropdown-menu button {
+    display: flex;
+    width: 100%;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    text-decoration: none !important;
+    color: #000000;
+    font-family: 'Roboto Flex-Medium', Helvetica;
+    font-size: 16px;
+    font-weight: 500;
+    background: none;
+    cursor: pointer;
+}
+
+.dropdown-menu a:hover, 
+.dropdown-menu button:hover {
+    background-color: #ff5e37;
+    border-radius: 10px;
+    color: #f3f2f7;
+}
+
 /* Responsive Layout */
 /* @media screen and (max-width: 768px) {
     .std-header {
