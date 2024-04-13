@@ -1,4 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // Project Coordinator pages
 import ProCoHome from "./pages/projectCoordinator/ProCoHome";
@@ -26,11 +28,14 @@ import StdSignUp from "./pages/student/StdSignUp";
 import StdLogin from "./pages/student/StdLogin";
 import StdHome from "./pages/student/StdHome";
 import StdGrpRegistration from "./pages/student/StdGrpRegistration";
+import StdRePaperPublication from "./pages/student/StdRePaperPublication";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App ()
 {
   return (
     <BrowserRouter>
+      {/* <ToastContainer /> */ }
       <Routes>
 
         {/* Student Pages */ }
@@ -38,6 +43,18 @@ function App ()
         <Route path="/std-pc-pm-signup" element={ <StdSignUp /> } />
         <Route path="/std-pc-pm-login" element={ <StdLogin /> } />
         <Route path="/std-group-reg" element={ <StdGrpRegistration /> } />
+        <Route path="/std-re-pap-pub" element={ <StdRePaperPublication /> } />
+        {/* <Route path="/std-group-reg" element={
+          <ProtectedRoute>
+            <StdGrpRegistration />
+          </ProtectedRoute>
+        } />
+
+        <Route path="/std-re-pap-pub" element={
+          <ProtectedRoute>
+            <StdRePaperPublication />
+          </ProtectedRoute>
+        } /> */}
 
         {/* Project Coordinator Pages */ }
         <Route path="/proCo-home" element={ <ProCoHome /> } />

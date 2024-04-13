@@ -21,7 +21,7 @@ function StdHome ()
 
                     <button className='std-home-btn-rpp'>
                         <Link
-                            to={ '#' }
+                            to={ '/std-re-pap-pub' }
                             style={ { textDecoration: 'none' } }
                         >Research Paper Publication</Link>
                     </button>

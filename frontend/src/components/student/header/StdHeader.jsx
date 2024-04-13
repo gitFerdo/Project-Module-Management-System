@@ -78,7 +78,7 @@ function StdHeader ()
                             </li>
 
                             <li className={ `std-header-li ${ location.pathname === '/std-re-pap-pub' ? 'active' : '' }` }>
-                                <a href='/std-group-reg'>Research Paper Publication</a>
+                                <a href='/std-re-pap-pub'>Research Paper Publication</a>
                             </li>
 
                             <li className={ `std-header-li ${ location.pathname === '/std-marks' ? 'active' : '' }` }>

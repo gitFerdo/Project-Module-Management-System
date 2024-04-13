@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import StdHeader from '../../components/student/header/StdHeader';
 import '../../styles/student/StdGrpRegistration.css';
 import axios from 'axios';
@@ -6,7 +6,29 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function StdGrpRegistration ()
 {
+    const formRef = useRef( null ); // Add this line
     const navigate = useNavigate();
+
+    // for check validation of registration
+    const allowedSpecializations = [ 'IT', 'SE', 'IS', 'CS', 'DS', 'CSNE' ];
+    const allowedBatches = [ 'Regular', 'June' ];
+    const allowedResearchAreas = [ 'Machine Learning', 'Natural Language Processing', 'Intelligent Systems', 'Robotics' ];
+
+    function validateInput ( e, allowedValues, customMessage )
+    {
+        const inputValue = e.target.value;
+        if ( !allowedValues.includes( inputValue ) )
+        {
+            e.target.setCustomValidity( customMessage );
+        } else
+        {
+            e.target.setCustomValidity( '' );
+            if ( formRef.current )
+            {
+                formRef.current.reportValidity();
+            }
+        }
+    }
 
     const [ projectData, setProjectData ] = useState( {
         leader: {
@@ -103,7 +125,11 @@ function StdGrpRegistration ()
 
             <div className='std-grpReg-container-inner'>
                 <div className='std-grpReg-form-container'>
-                    <form onSubmit={ handleSubmit } className='std-grpReg-form'>
+                    <form
+                        ref={ formRef }
+                        onSubmit={ handleSubmit }
+                        className='std-grpReg-form'
+                    >
                         <div className='std-grpReg-form-inner'>
                             <div className='std-grpReg-form-inner-section1'>
                                 <div className='main-heading'>
@@ -187,7 +213,11 @@ function StdGrpRegistration ()
                                             <td>
                                                 <input
                                                     className='std-grpReg-form-input'
-                                                    type='number'
+                                                    type='text'
+                                                    minLength='10'
+                                                    maxLength='10'
+                                                    pattern='[0-9]{10}'
+                                                    title='Contact No is not valid.'
                                                     name='contactNumber'
                                                     value={ projectData.leader.contactNumber }
                                                     onChange={ handleLeaderChange }
@@ -199,7 +229,11 @@ function StdGrpRegistration ()
                                                 <td key={ index }>
                                                     <input
                                                         className='std-grpReg-form-input'
-                                                        type='number'
+                                                        type='text'
+                                                        minLength='10'
+                                                        maxLength='10'
+                                                        pattern='[0-9]{10}'
+                                                        title='Contact No is not valid.'
                                                         name='contactNumber'
                                                         value={ member.contactNumber }
                                                         onChange={ ( e ) => handleMemberChange( e, index ) }
@@ -249,6 +283,7 @@ function StdGrpRegistration ()
                                                     name='batch'
                                                     value={ projectData.leader.batch }
                                                     onChange={ handleLeaderChange }
+                                                    onBlur={ ( e ) => validateInput( e, allowedBatches, "Please enter 'Regular' or 'June'." ) }
                                                     required
                                                 />
                                             </td>
@@ -261,6 +296,7 @@ function StdGrpRegistration ()
                                                         name='batch'
                                                         value={ member.batch }
                                                         onChange={ ( e ) => handleMemberChange( e, index ) }
+                                                        onBlur={ ( e ) => validateInput( e, allowedBatches, "Please enter 'Regular' or 'June'." ) }
                                                         required
                                                     />
                                                 </td>
@@ -278,6 +314,7 @@ function StdGrpRegistration ()
                                                     name='specialization'
                                                     value={ projectData.leader.specialization }
                                                     onChange={ handleLeaderChange }
+                                                    onBlur={ ( e ) => validateInput( e, allowedSpecializations, "Please enter 'IT', 'SE', 'IS', 'CS', 'DS', or 'CSNE'." ) }
                                                     required
                                                 />
                                             </td>
@@ -290,6 +327,7 @@ function StdGrpRegistration ()
                                                         name='specialization'
                                                         value={ member.specialization }
                                                         onChange={ ( e ) => handleMemberChange( e, index ) }
+                                                        onBlur={ ( e ) => validateInput( e, allowedSpecializations, "Please enter 'IT', 'SE', 'IS', 'CS', 'DS', or 'CSNE'." ) }
                                                         required
                                                     />
                                                 </td>
@@ -306,63 +344,66 @@ function StdGrpRegistration ()
                                     <span className='heading-blue'>Project Deta</span><span className='heading-orange'>ils</span>
                                 </div>
 
-                                <div className='sec2'>
-                                    <label className='std-grpReg-form-label' htmlFor='title'>Project Title :</label>
-                                    <input
-                                        className='std-grpReg-form-input'
-                                        type='text'
-                                        name='title'
-                                        value={ projectData.project.title }
-                                        onChange={ handleProjectChange }
-                                        required
-                                    />
-                                </div>
+                                <div className='std-grpReg-form-inner-sec2-inner'>
+                                    <div className='sec2-title'>
+                                        <label className='std-grpReg-form-label' htmlFor='title'>Project Title :</label>
+                                        <input
+                                            className='std-grpReg-form-input'
+                                            type='text'
+                                            name='title'
+                                            value={ projectData.project.title }
+                                            onChange={ handleProjectChange }
+                                            required
+                                        />
+                                    </div>
 
-                                <div className='sec2'>
-                                    <label className='std-grpReg-form-label' htmlFor='researchArea'>Research Area :</label>
-                                    <p className='std-grpReg-form-label-sub2'>(Machine Learning, Natural Language Processing, Intelligent System or Robotics)</p>
-                                    <input
-                                        className='std-grpReg-form-input'
-                                        type='text'
-                                        name='researchArea'
-                                        value={ projectData.project.researchArea }
-                                        onChange={ handleProjectChange }
-                                        required
-                                    />
-                                </div>
+                                    <div className='sec2-rearea'>
+                                        <label className='std-grpReg-form-label' htmlFor='researchArea'>Research Area :</label>
+                                        <p className='std-grpReg-form-label-sub2'>(Machine Learning, Natural Language Processing, Intelligent System or Robotics)</p>
+                                        <input
+                                            className='std-grpReg-form-input'
+                                            type='text'
+                                            name='researchArea'
+                                            value={ projectData.project.researchArea }
+                                            onChange={ handleProjectChange }
+                                            onBlur={ ( e ) => validateInput( e, allowedResearchAreas, "Please enter 'Machine Learning', 'Natural Language Processing', 'Intelligent System' or 'Robotics'" ) }
+                                            required
+                                        />
+                                    </div>
 
-                                <div className='sec2'>
-                                    <label className='std-grpReg-form-label' htmlFor='supervisors'>Supervisors :</label>
-                                    <select
-                                        className='std-grpReg-form-select-supervisor'
-                                        type='text'
-                                        name='supervisors'
-                                        value={ projectData.project.supervisors }
-                                        onChange={ handleProjectChange }
-                                        required
-                                    >
-                                        <option>Select</option>
-                                        <option>Supervisor 01</option>
-                                        <option>Supervisor 02</option>
-                                        <option>Supervisor 03</option>
-                                    </select>
-                                </div>
+                                    <div className='sec2-sup-select'>
+                                        <label className='std-grpReg-form-label' htmlFor='supervisors'>Supervisors :</label>
+                                        <select
+                                            className='std-grpReg-form-select-supervisor'
+                                            type='text'
+                                            name='supervisors'
+                                            value={ projectData.project.supervisors }
+                                            onChange={ handleProjectChange }
+                                            required
+                                        >
+                                            <option>Select</option>
+                                            <option>Supervisor 01</option>
+                                            <option>Supervisor 02</option>
+                                            <option>Supervisor 03</option>
+                                        </select>
+                                    </div>
 
-                                <div className='sec2'>
-                                    <label className='std-grpReg-form-label' htmlFor='coSupervisors'>Co-Supervisors :</label>
-                                    <select
-                                        className='std-grpReg-form-select-cosupervisor'
-                                        type='text'
-                                        name='coSupervisors'
-                                        value={ projectData.project.coSupervisors }
-                                        onChange={ handleProjectChange }
-                                        required
-                                    >
-                                        <option>Select</option>
-                                        <option>Co-Supervisor 01</option>
-                                        <option>Co-Supervisor 02</option>
-                                        <option>Co-Supervisor 03</option>
-                                    </select>
+                                    <div className='sec2-cosup-select'>
+                                        <label className='std-grpReg-form-label' htmlFor='coSupervisors'>Co-Supervisors :</label>
+                                        <select
+                                            className='std-grpReg-form-select-cosupervisor'
+                                            type='text'
+                                            name='coSupervisors'
+                                            value={ projectData.project.coSupervisors }
+                                            onChange={ handleProjectChange }
+                                            required
+                                        >
+                                            <option>Select</option>
+                                            <option>Co-Supervisor 01</option>
+                                            <option>Co-Supervisor 02</option>
+                                            <option>Co-Supervisor 03</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
 
