@@ -1,0 +1,177 @@
+.std-grp-reg-container-inner{
+     margin: auto;
+    padding: 0;
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 100%;
+    background-color: #FF5E37;
+    min-height: 100vh;
+}
+
+.std-grp-reg-from{
+    position: relative;
+    margin-top: 90px;
+    margin-bottom: 90px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding: 20px 10px 50px 10px;
+    background-color: #F3F2F7F2;
+    border-radius: 0px 60px 0px 60px;
+    box-shadow: 0px 24px 53px #0000001a, 0px 96px 96px #00000017, 0px 215px 129px #0000000d, 0px 383px 153px #00000003, 0px 598px 167px transparent;
+    height: auto;
+    width: 85%;
+    min-height: 1200px;
+}
+
+.std-grp-reg-form-inner{
+    display: block;
+    padding: 5px 50px;
+}
+
+.std-grp-reg-form-inner .main-heading {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.std-grp-reg-from-inner-section1{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.std-grp-reg-from-inner-section1 .std-grp-reg-form-field {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.std-grp-reg-form-label{
+    border: none !important;
+    color: #292929;
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: start;
+    justify-content: start;
+    margin-right: 50px;   
+}
+
+.std-grp-reg-from-input,
+.std-grp-reg-from-select-supervisor,
+.std-grp-reg-from-select-cosupervisor {
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 40px;
+    width: 700px;
+    border: 1px solid #292929;
+    padding: 0px 15px;
+    color: #949494;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0px 5px 10px #0000000a;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.std-grp-reg-from-select-student {
+    background-color: #ffffff;
+    border-radius: 8px;
+    height: 40px;
+    width: 190px;
+    border: 1px solid #292929;
+    padding: 0px 15px;
+    color: #949494;
+    font-size: 12px;
+    font-weight: 400;
+    box-shadow: 0px 5px 10px #0000000a;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.std-grp-reg-from-select-student::after,
+.std-grp-reg-from-select-supervisor::after,
+.std-grp-reg-from-select-cosupervisor::after {
+    content: '▼';
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 14px;
+}
+
+.std-grp-reg-from-inner-section2 {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+    padding: 20px;
+}
+
+.std-grp-reg-from-inner-section2 .std-grp-reg-form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 700px;
+}
+
+.std-grp-reg-from-inner-section2 .std-grp-reg-form-label {
+    color: #292929;
+    font-family: "Roboto Flex-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: start;
+    margin-bottom: 5px;
+}
+
+.std-grp-reg-from-input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.std-grp-reg-from-input[type="file"] {
+  height: 83px;
+  width: 708px;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.std-grp-reg-from-input[type="file"]::before {
+  content: 'Add a Photo';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #cdcdcd;
+}
+
+.std-grp-reg-form-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 35px;
+    padding: 15px 150px;
+    border-radius: 30px;
+    border: none;
+    background-color: #1B6C86;
+    color: #F3F2F7;
+    font-family: 'Roboto Mono', Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+    text-shadow: 0px 18px 18px #00000017;
+    box-shadow: 0px 5px 10px #0000002b, 0px 18px 18px #00000017;
+    cursor: pointer;
+}
