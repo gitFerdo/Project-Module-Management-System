@@ -153,26 +153,23 @@ function StdRePaperPublication ()
                                         onChange={ handleChange }
                                     >
                                         <option value="">Select Leader</option>
-                                        { projectGroups.map( group => (
-                                            <option key={ group.leader._id } value={ group.leader._id }>{ group.leader.name }</option>
+                                        { projectGroups.map( ( group, groupIndex ) => (
+                                            <option key={ `${ group._id }-leader` } value={ group.leader._id }>{ group.leader.name }</option>
                                         ) ) }
                                     </select>
 
                                     { [ 'member1', 'member2', 'member3' ].map( ( member, index ) => (
-                                        <div key={ index }>
-                                            <label htmlFor={ `students.member${ index + 1 }` }></label>
+                                        <div key={ `${ member }` }>
+                                            <label htmlFor={ `students.${ member }` }> </label>
                                             <select
                                                 className='std-grp-reg-from-select-student'
-                                                name={ `students.member${ index + 1 }` }
-                                                value={ publicationData.students[ `member${ index + 1 }` ] }
+                                                name={ `students.${ member }` }
+                                                value={ publicationData.students[ member ] || "" }
                                                 onChange={ handleChange }
-                                                required
                                             >
                                                 <option value="">Select Member</option>
                                                 { projectGroups.map( ( group, groupIndex ) => (
-                                                    <option key={ `${ group._id }-${ group.members[ index ]._id }` } value={ group.members[ index ]._id }>
-                                                        { group.members[ index ].name }
-                                                    </option>
+                                                    <option key={ `${ group._id }-${ group.members[ index ]._id }` } value={ group.members[ index ]._id }>{ group.members[ index ].name }</option>
                                                 ) ) }
                                             </select>
                                         </div>

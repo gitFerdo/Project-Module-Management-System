@@ -4,10 +4,10 @@ const ResearchPaperPublicationSchema = new mongoose.Schema( {
     title: { type: String, required: true },
     students: [
         {
-            leader: { type: String, required: true },
-            member1: { type: String, required: true },
-            member2: { type: String, required: true },
-            member3: { type: String, required: true }
+            leader: { type: String, required: false },
+            member1: { type: String, required: false },
+            member2: { type: String, required: false },
+            member3: { type: String, required: false }
         }
     ],
     supervisor: { type: String, required: true },
