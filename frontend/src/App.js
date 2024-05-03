@@ -33,6 +33,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import StdGrpDetail from "./pages/student/StdGrpDetail";
 import StdEditGrpDetails from "./pages/student/StdEditGrpDetails";
 import StdProfile from "./pages/student/StdProfile";
+import StdMarks from "./pages/student/StdMarks";
 
 function App ()
 {
@@ -50,6 +51,7 @@ function App ()
         <Route path="/group-details/:id" element={ <StdGrpDetail /> } />
         <Route path="/edit-group-details/:id" element={ <StdEditGrpDetails /> } />
         <Route path="/profile" element={ <StdProfile /> } />
+        <Route path="/std-marks" element={ <StdMarks /> } />
         {/* <Route path="/std-group-reg" element={
           <ProtectedRoute>
             <StdGrpRegistration />
