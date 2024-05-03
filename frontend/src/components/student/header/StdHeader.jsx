@@ -82,7 +82,7 @@ function StdHeader ()
                             </li>
 
                             <li className={ `std-header-li ${ location.pathname === '/std-marks' ? 'active' : '' }` }>
-                                <a href='/std-group-reg'>Marks</a>
+                                <a href='/std-marks'>Marks</a>
                             </li>
 
                             { isLoggedIn ? (

@@ -61,7 +61,7 @@ function StdRePaperPublication ()
         {
             setPublicationData( prevState => ( {
                 ...prevState,
-                [ name ]: value,
+                [ name.replace( 'students.', '' ) ]: value,
             } ) );
         }
     };
@@ -169,12 +169,15 @@ function StdRePaperPublication ()
                                                 required
                                             >
                                                 <option value="">Select Member</option>
-                                                { projectGroups.map( group => (
-                                                    <option key={ group.members[ index ]._id } value={ group.members[ index ]._id }>{ group.members[ index ].name }</option>
+                                                { projectGroups.map( ( group, groupIndex ) => (
+                                                    <option key={ `${ group._id }-${ group.members[ index ]._id }` } value={ group.members[ index ]._id }>
+                                                        { group.members[ index ].name }
+                                                    </option>
                                                 ) ) }
                                             </select>
                                         </div>
                                     ) ) }
+
                                 </div>
 
                                 <div className='std-grp-reg-form-field'>
