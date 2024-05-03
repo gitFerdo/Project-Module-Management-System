@@ -1,74 +1,62 @@
-// import React, { useEffect, useState } from 'react';
-// import StdHeader from '../../components/student/header/StdHeader';
-// import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import StdHeader from '../../components/student/header/StdHeader';
 
-// function StdGrpDetail ()
-// {
-//     const { id } = useParams();
-//     const [ projectData, setProjectData ] = useState( {} );
-//     const [ loading, setLoading ] = useState( true );
-//     const [ error, setError ] = useState( '' );
+function StdGrpDetail ()
+{
+    const { id } = useParams();
+    const [ group, setGroup ] = useState( null );
 
-//     useEffect( () =>
-//     {
-//         const fetchProject = async () =>
-//         {
-//             try
-//             {
-//                 const response = await fetch( `http://localhost:3000/std-proGrp-detail/${ id }` );
-//                 if ( !response.ok )
-//                 {
-//                     throw new Error( 'Failed to fetch project details' );
-//                 }
-//                 const data = await response.json();
-//                 setProjectData( data.data );
-//                 setLoading( false );
-//             } catch ( error )
-//             {
-//                 setError( 'Error fetching project details' );
-//                 setLoading( false );
-//             }
-//         };
+    useEffect( () =>
+    {
+        const fetchGroupDetails = async () =>
+        {
+            try
+            {
+                const response = await axios.get( `http://localhost:3000/auth/std-proGrp-detail/${ id }` );
+                setGroup( response.data.data );
+            } catch ( error )
+            {
+                console.error( 'Failed to fetch group details', error );
+            }
+        };
 
-//         fetchProject();
-//     }, [ id ] );
+        fetchGroupDetails();
+    }, [ id ] );
 
-//     if ( loading )
-//     {
-//         return <div>Loading...</div>;
-//     }
+    if ( !group ) return <div>Loading...</div>;
+    return (
+        <div className='std-grp-detail-container'>
+            <StdHeader />
 
-//     if ( error )
-//     {
-//         return <div>{ error }</div>;
-//     }
+            <div>
+                <h2>Group Details</h2>
+                <p>Project Title: { group.project.title }</p>
+                <p>Research Area: { group.project.researchArea }</p>
+                <p>Supervisors: { group.project.supervisors }</p>
+                <p>Co-Supervisors: { group.project.coSupervisors }</p>
+                <h3>Leader Details</h3>
+                <p>Name: { group.leader.name }</p>
+                <p>Registration Number: { group.leader.registrationNumber }</p>
+                <p>Contact Number: { group.leader.contactNumber }</p>
+                <p>Email: { group.leader.email }</p>
+                <p>Batch: { group.leader.batch }</p>
+                <p>Specialization: { group.leader.specialization }</p>
+                <h3>Members</h3>
+                { group.members.map( ( member, index ) => (
+                    <div key={ index }>
+                        <p>Name: { member.name }</p>
+                        <p>Registration Number: { member.registrationNumber }</p>
+                        <p>Contact Number: { member.contactNumber }</p>
+                        <p>Email: { member.email }</p>
+                        <p>Batch: { member.batch }</p>
+                        <p>Specialization: { member.specialization }</p>
+                    </div>
+                ) ) }
+            </div>
+        </div>
+    )
+}
 
-//     if ( !projectData )
-//     {
-//         return <div>Project not found</div>;
-//     }
-
-//     return (
-//         <div className='detail-view-container'>
-//             <StdHeader />
-//             <h2>Project Details</h2>
-//             <div>
-//                 <p><strong>Title:</strong> { projectData.title }</p>
-//                 <p><strong>Research Area:</strong> { projectData.researchArea }</p>
-//                 <p><strong>Supervisors:</strong> { projectData.supervisors }</p>
-//                 <p><strong>Co-Supervisors:</strong> { projectData.coSupervisors }</p>
-//             </div>
-//             <h2>Group Members</h2>
-//             <div>
-//                 <p><strong>Leader:</strong> { projectData.leader.name }</p>
-//                 <ul>
-//                     { projectData.members.map( ( member, index ) => (
-//                         <li key={ index }>{ member.name }</li>
-//                     ) ) }
-//                 </ul>
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default StdGrpDetail;
+export default StdGrpDetail

@@ -62,7 +62,8 @@ function StdGrpRegistration ()
                 if ( response.data.status === 'Project group registered successfully' )
                 {
                     console.log( response.data.status );
-                    navigate( '/std-home' );
+                    // Navigate to the group details page
+                    navigate( `/group-details/${ response.data.data._id }` );
                 } else
                 {
                     console.log( response.data.status );
@@ -75,7 +76,6 @@ function StdGrpRegistration ()
                 alert( 'An error occurred while registering. Failed to register project group' );
             } );
     };
-
 
     const handleLeaderChange = ( e ) =>
     {
