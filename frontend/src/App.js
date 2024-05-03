@@ -31,6 +31,8 @@ import StdGrpRegistration from "./pages/student/StdGrpRegistration";
 import StdRePaperPublication from "./pages/student/StdRePaperPublication";
 import ProtectedRoute from "./components/ProtectedRoute";
 import StdGrpDetail from "./pages/student/StdGrpDetail";
+import StdEditGrpDetails from "./pages/student/StdEditGrpDetails";
+import StdProfile from "./pages/student/StdProfile";
 
 function App ()
 {
@@ -46,6 +48,8 @@ function App ()
         <Route path="/std-group-reg" element={ <StdGrpRegistration /> } />
         <Route path="/std-re-pap-pub" element={ <StdRePaperPublication /> } />
         <Route path="/group-details/:id" element={ <StdGrpDetail /> } />
+        <Route path="/edit-group-details/:id" element={ <StdEditGrpDetails /> } />
+        <Route path="/profile" element={ <StdProfile /> } />
         {/* <Route path="/std-group-reg" element={
           <ProtectedRoute>
             <StdGrpRegistration />

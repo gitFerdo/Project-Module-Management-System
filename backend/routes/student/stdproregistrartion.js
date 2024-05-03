@@ -24,6 +24,13 @@ router.get( '/std-proGrp-detail/:id', async ( req, res ) =>
     try
     {
         const id = req.params.id;
+
+        // Ensure the received ID is valid
+        if ( !id )
+        {
+            return res.status( 400 ).json( { status: 'Failed', error: 'Invalid ID' } );
+        }
+
         const project = await stdProGroup.findById( id );
 
         if ( !project )
@@ -48,6 +55,35 @@ router.get( '/project-groups', async ( req, res ) =>
     } catch ( error )
     {
         console.error( 'Error fetching project groups', error );
+        res.status( 500 ).json( { status: 'Failed', error: error.message } );
+    }
+} );
+
+// for editing groups details
+router.put( '/std-proGrp-reg/:id', async ( req, res ) =>
+{
+    try
+    {
+        const updatedGroup = await stdProGroup.findByIdAndUpdate( req.params.id, req.body, { new: true } );
+        res.status( 200 ).json( { status: 'Group updated successfully', data: updatedGroup } );
+    } catch ( error )
+    {
+        console.error( 'Failed to update group', error );
+        res.status( 500 ).json( { status: 'Failed to update group', error: error.message } );
+    }
+} );
+
+// Route to delete a specific project group by ID
+router.delete( '/std-proGrp-reg/:id', async ( req, res ) =>
+{
+    try
+    {
+        const id = req.params.id;
+        await stdProGroup.findByIdAndDelete( id );
+        res.status( 200 ).json( { status: 'Success', message: 'Group deleted successfully' } );
+    } catch ( error )
+    {
+        console.error( 'Error deleting group', error.message );
         res.status( 500 ).json( { status: 'Failed', error: error.message } );
     }
 } );
