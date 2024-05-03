@@ -39,4 +39,17 @@ router.get( '/std-proGrp-detail/:id', async ( req, res ) =>
     }
 } );
 
+router.get( '/project-groups', async ( req, res ) =>
+{
+    try
+    {
+        const projectGroups = await stdProGroup.find();
+        res.status( 200 ).json( { status: 'Success', data: projectGroups } );
+    } catch ( error )
+    {
+        console.error( 'Error fetching project groups', error );
+        res.status( 500 ).json( { status: 'Failed', error: error.message } );
+    }
+} );
+
 export { router as stdProGroupRouter };

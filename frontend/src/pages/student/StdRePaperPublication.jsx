@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import StdHeader from '../../components/student/header/StdHeader';
 import '../../styles/student/StdRePaperPublication.css';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,25 @@ import axios from 'axios';
 function StdRePaperPublication ()
 {
     const navigate = useNavigate();
+
+    const [ projectGroups, setProjectGroups ] = useState( [] );
+
+    useEffect( () =>
+    {
+        const fetchProjectGroups = async () =>
+        {
+            try
+            {
+                const response = await axios.get( 'http://localhost:3000/auth/project-groups' );
+                setProjectGroups( response.data.data );
+            } catch ( error )
+            {
+                console.error( 'Failed to fetch project groups', error );
+            }
+        };
+
+        fetchProjectGroups();
+    }, [] );
 
     // Adjust the state to include separate fields for each student role
     const [ publicationData, setPublicationData ] = useState( {
@@ -31,22 +50,12 @@ function StdRePaperPublication ()
 
     const handleChange = ( e ) =>
     {
-        const { name, value, files, type } = e.target;
-        if ( name.includes( 'students.' ) )
-        {
-            const field = name.split( '.' )[ 1 ];
-            setPublicationData( prevState => ( {
-                ...prevState,
-                students: {
-                    ...prevState.students,
-                    [ field ]: value,
-                },
-            } ) );
-        } else if ( type === 'file' )
+        const { name, value, type } = e.target;
+        if ( type === 'file' )
         {
             setPublicationData( prevState => ( {
                 ...prevState,
-                [ name ]: files[ 0 ],
+                [ name ]: e.target.files[ 0 ],
             } ) );
         } else
         {
@@ -135,62 +144,37 @@ function StdRePaperPublication ()
                                 </div>
 
                                 <div className='std-grp-reg-form-field'>
-                                    <label className='std-grp-reg-form-label' htmlFor='students.leader'>Students  :</label>
+                                    <label className='std-grp-reg-form-label' htmlFor='students.leader'>Students :</label>
 
                                     <select
                                         className='std-grp-reg-from-select-student'
                                         name='students.leader'
                                         value={ publicationData.students.leader }
                                         onChange={ handleChange }
-                                        required
                                     >
-                                        <option>Leader</option>
-                                        <option>Leader 1</option>
-                                        <option>Leader 2</option>
-                                        <option>Leader 3</option>
+                                        <option value="">Select Leader</option>
+                                        { projectGroups.map( group => (
+                                            <option key={ group.leader._id } value={ group.leader._id }>{ group.leader.name }</option>
+                                        ) ) }
                                     </select>
 
-                                    <label htmlFor='students.member1'></label>
-                                    <select
-                                        className='std-grp-reg-from-select-student'
-                                        name='students.member1'
-                                        value={ publicationData.students.member1 }
-                                        onChange={ handleChange }
-                                        required
-                                    >
-                                        <option>Member 01</option>
-                                        <option>Member</option>
-                                        <option>Member</option>
-                                        <option>Member</option>
-                                    </select>
-
-                                    <label htmlFor='students.member2'></label>
-                                    <select
-                                        className='std-grp-reg-from-select-student'
-                                        name='students.member2'
-                                        value={ publicationData.students.member2 }
-                                        onChange={ handleChange }
-                                        required
-                                    >
-                                        <option>Member 02</option>
-                                        <option>Member</option>
-                                        <option>Member</option>
-                                        <option>Member</option>
-                                    </select>
-
-                                    <label htmlFor='students.member3'></label>
-                                    <select
-                                        className='std-grp-reg-from-select-student'
-                                        name='students.member3'
-                                        value={ publicationData.students.member3 }
-                                        onChange={ handleChange }
-                                        required
-                                    >
-                                        <option>Member 03</option>
-                                        <option>Member</option>
-                                        <option>Member</option>
-                                        <option>Member</option>
-                                    </select>
+                                    { [ 'member1', 'member2', 'member3' ].map( ( member, index ) => (
+                                        <div key={ index }>
+                                            <label htmlFor={ `students.member${ index + 1 }` }></label>
+                                            <select
+                                                className='std-grp-reg-from-select-student'
+                                                name={ `students.member${ index + 1 }` }
+                                                value={ publicationData.students[ `member${ index + 1 }` ] }
+                                                onChange={ handleChange }
+                                                required
+                                            >
+                                                <option value="">Select Member</option>
+                                                { projectGroups.map( group => (
+                                                    <option key={ group.members[ index ]._id } value={ group.members[ index ]._id }>{ group.members[ index ].name }</option>
+                                                ) ) }
+                                            </select>
+                                        </div>
+                                    ) ) }
                                 </div>
 
                                 <div className='std-grp-reg-form-field'>
