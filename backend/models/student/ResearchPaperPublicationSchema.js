@@ -1,18 +1,27 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const ResearchPaperPublicationSchema = new mongoose.Schema( {
-    title: String,
-    students: [ String ],
-    supervisor: String,
-    cosupervisor: String,
-    confJournal: String,
-    issn: String,
-    rankLinks: String,
-    scopusLink: String,
-    acceptLetter: String,
-    reviewSheet: String,
-    registerConfirm: String,
-    registerFeePaid: Boolean,
+    title: { type: String, required: true },
+    students: [
+        {
+            leader: { type: String, required: true },
+            member1: { type: String, required: true },
+            member2: { type: String, required: true },
+            member3: { type: String, required: true }
+        }
+    ],
+    supervisor: { type: String, required: true },
+    cosupervisor: { type: String, required: true },
+    confJournal: { type: String, required: true },
+    issn: { type: String, required: true },
+    rankLinks: { type: String, required: true },
+    scopusLink: { type: String, required: true },
+    acceptLetter: { type: String, required: false },
+    reviewSheet: { type: String, required: false },
+    registerConfirm: { type: String, required: true },
+    registerFeePaid: { type: String, required: true }
 } );
 
-export default mongoose.model( 'ResearchPaperPublication', ResearchPaperPublicationSchema );
+const ResearchPaperPublicationModel = mongoose.model( "ResearchPaperPublication", ResearchPaperPublicationSchema );
+
+export { ResearchPaperPublicationModel as ResearchPaperPublication };

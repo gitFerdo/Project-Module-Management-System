@@ -9,6 +9,7 @@ import { ExaminerRouter } from './routes/examiner.js';
 import { SupervisorRouter } from './routes/supervisor.js';
 import { CoSupervisorRouter } from './routes/cosupervisor.js';
 import { stdProGroupRouter } from './routes/student/stdproregistrartion.js';
+import { researchPaperPublicationRouter } from './routes/student/researchPaperPublication.js';
 
 dotenv.config();
 
@@ -27,6 +28,7 @@ app.use( '/auth', ExaminerRouter );
 app.use( '/auth', SupervisorRouter );
 app.use( '/auth', CoSupervisorRouter );
 app.use( '/auth', stdProGroupRouter );
+app.use( '/auth', researchPaperPublicationRouter );
 
 // Database connection
 mongoose.set( "strictQuery", false );

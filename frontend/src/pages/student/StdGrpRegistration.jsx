@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function StdGrpRegistration ()
 {
-    const formRef = useRef( null ); // Add this line
+    const formRef = useRef( null );
     const navigate = useNavigate();
 
     // for check validation of registration
